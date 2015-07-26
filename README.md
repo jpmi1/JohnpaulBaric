@@ -1,2 +1,0 @@
-# JohnpaulBaric
-About me
