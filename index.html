@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>JohnPaul Baric</title>
 
-  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
@@ -18,7 +17,7 @@
   <header class="hero" id="top" aria-label="Hero">
     <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
 
-    <div class="hero__ui" aria-hidden="false">
+    <div class="hero__ui">
       <div class="hero__uiInner">
         <a class="hero__name invertable" href="#top" aria-label="Home">
           <span>JohnPaul</span>
@@ -31,28 +30,24 @@
 
         <div class="hero__social" aria-label="Social links">
           <a class="hero__icon invertable" data-social="instagram" href="#" target="_blank" rel="noreferrer" aria-label="Instagram">
-            <!-- Solid Instagram icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5A5.5 5.5 0 1 1 6.5 14 5.5 5.5 0 0 1 12 8.5zm0 2A3.5 3.5 0 1 0 15.5 14 3.5 3.5 0 0 0 12 10.5zM18 6.8a1.2 1.2 0 1 1-1.2-1.2A1.2 1.2 0 0 1 18 6.8z"/>
             </svg>
           </a>
 
           <a class="hero__icon invertable" data-social="x" href="#" target="_blank" rel="noreferrer" aria-label="X / Twitter">
-            <!-- Solid X icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M18.9 2H22l-7.4 8.5L23 22h-6.7l-5.2-6.7L4.9 22H2l8-9.2L1 2h6.9l4.7 6.1L18.9 2zm-1.2 18h1.7L7.1 3.9H5.3L17.7 20z"/>
             </svg>
           </a>
 
           <a class="hero__icon invertable" data-social="youtube" href="#" target="_blank" rel="noreferrer" aria-label="YouTube">
-            <!-- Solid YouTube icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.6 12 4.6 12 4.6s-5.8 0-7.5.5A3 3 0 0 0 2.4 7.2 31.7 31.7 0 0 0 2 12a31.7 31.7 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.5 7.5.5 7.5.5s5.8 0 7.5-.5a3 3 0 0 0 2.1-2.1A31.7 31.7 0 0 0 22 12a31.7 31.7 0 0 0-.4-4.8zM10 15.5v-7l6 3.5-6 3.5z"/>
             </svg>
           </a>
 
           <a class="hero__icon invertable" data-social="linkedin" href="#" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <!-- Solid LinkedIn icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M20.5 2H3.5A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5.5V9H8v10zM6.75 7.8A1.45 1.45 0 1 1 8.2 6.35 1.45 1.45 0 0 1 6.75 7.8zM19 19h-2.5v-5.3c0-1.26 0-2.88-1.75-2.88s-2 1.37-2 2.79V19H10.3V9h2.4v1.37h.03A2.63 2.63 0 0 1 15.1 9c2.52 0 3.9 1.66 3.9 4.78V19z"/>
             </svg>
@@ -68,18 +63,112 @@
   <main>
     <section class="section" id="portfolio">
       <div class="section__kicker">Portfolio</div>
-      <h2 id="tagline">Operator. Builder. Long-term thinker.</h2>
+      <h2 id="tagline">Builder. Operator. Media-first founder.</h2>
       <p>
-        This page is designed to be edited like a living document: swap the photos, update the lists,
-        and ship. The hero interaction is the hook. The sections below are the proof.
+        This is a one-page proof deck: what I’m building, where I’ve been, and why people pay attention.
+        Designed to ship fast and update continuously.
       </p>
 
       <div class="grid">
-        <div class="card portfolio__left">
+        <div class="card card--accent portfolio__baita">
+          <h3 id="baitaTitle">BAITA AI</h3>
+          <div style="font-family: Playfair Display, serif; font-size: 22px; margin-bottom: 10px;" id="baitaSubtitle"></div>
+          <p id="baitaBlurb" style="margin-top:0;"></p>
+
+          <div class="split">
+            <div>
+              <h3>Why it’s different</h3>
+              <ul class="list" id="baitaDifferentiators"></ul>
+
+              <div style="height: 10px;"></div>
+
+              <h3>First wedge</h3>
+              <ul class="list" id="baitaProduct"></ul>
+
+              <div class="pillRow" id="baitaRaise"></div>
+
+              <div class="buttonRow">
+                <a class="btn btn--primary" id="baitaDeck" href="downloads/baita-2025.pdf" target="_blank" rel="noreferrer">Deck (PDF)</a>
+                <a class="btn" id="baitaEmail" href="#">Investor email</a>
+                <a class="btn" id="baitaLinkedIn" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+              </div>
+            </div>
+
+            <div>
+              <h3>Intent</h3>
+              <p style="margin-top:0;">
+                If you invest in execution, not hype: reach out. I’m building an application-layer agent system that aims to
+                replace repetitive work with measurable outcomes.
+              </p>
+
+              <div class="stat">
+                <div>
+                  <div class="stat__label">Round</div>
+                  <div class="stat__value">$3M SAFE</div>
+                </div>
+                <div>
+                  <div class="stat__label">Cap</div>
+                  <div class="stat__value">$30M</div>
+                </div>
+              </div>
+
+              <div style="height: 12px;"></div>
+
+              <div class="stat">
+                <div>
+                  <div class="stat__label">Discount</div>
+                  <div class="stat__value">25%</div>
+                </div>
+                <div>
+                  <div class="stat__label">Focus</div>
+                  <div class="stat__value">B2B</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card portfolio__proof">
+          <h3>Social proof</h3>
+
+          <div class="stat">
+            <div>
+              <div class="stat__label">TikTok followers</div>
+              <div class="stat__value" id="spFollowers">—</div>
+            </div>
+            <div>
+              <div class="stat__label">Viral views</div>
+              <div class="stat__value" id="spViews">—</div>
+            </div>
+          </div>
+
+          <p id="spPlatforms" style="margin: 14px 0 16px;"></p>
+
+          <div style="border-radius:16px; overflow:hidden; border:1px solid rgba(217,204,255,0.14);">
+            <img id="spImg" src="images/social/tiktok-viral.png" alt="Viral TikTok screenshot" style="width:100%; display:block;" />
+          </div>
+
+          <div class="buttonRow" style="margin-top: 14px;">
+            <a class="btn btn--primary" id="spViral" href="#" target="_blank" rel="noreferrer">Viral video</a>
+            <a class="btn" id="spDrPhil" href="#" target="_blank" rel="noreferrer">Dr. Phil appearance</a>
+          </div>
+
+          <div style="height: 10px;"></div>
+          <ul class="list" id="spNotes"></ul>
+        </div>
+
+        <div class="card portfolio__podcast">
+          <h3>Podcast</h3>
+          <div style="font-family: Playfair Display, serif; font-size: 24px; margin-bottom: 8px;" id="podcastName">Digital Gold</div>
+          <p id="podcastDesc" style="margin-top:0;"></p>
+          <h3>Listen</h3>
+          <ul class="list items" id="podcastLinks"></ul>
+        </div>
+
+        <div class="card portfolio__suit">
           <h3>Suit up</h3>
           <p style="margin-top: 0;">
-            Quick “headgear” mode for personality: mining / vibe-coding / skiing.
-            Replace the SVG overlays with custom PNGs if you want realism.
+            Quick “identity overlays” for personality. Swap the SVGs for photoreal cutouts any time.
           </p>
 
           <div class="headgear">
@@ -92,67 +181,50 @@
               <button type="button" data-gear="miner">Mining</button>
               <button type="button" data-gear="vibecoder">Vibe</button>
               <button type="button" data-gear="ski">Ski</button>
+              <button type="button" data-gear="space">Space</button>
               <button type="button" data-gear="none">None</button>
             </div>
           </div>
         </div>
-
-        <div class="card portfolio__right">
-          <h3>What I'm building</h3>
-          <ul class="list items" id="projects"></ul>
-
-          <div style="height: 18px;"></div>
-
-          <h3>Milestones</h3>
-          <ul class="list" id="milestones"></ul>
-        </div>
       </div>
+    </section>
+
+    <section class="section" id="speaking">
+      <div class="section__kicker">Public</div>
+      <h2>Speaking</h2>
+      <p id="speakingIntro"></p>
+
+      <div class="gallery" id="speakingGallery"></div>
     </section>
 
     <section class="section" id="travel">
       <div class="section__kicker">Life</div>
-      <h2>Travel map</h2>
+      <h2>Countries visited</h2>
       <p id="travelIntro"></p>
-      <div class="card">
-        <h3>Countries &amp; territories visited</h3>
-        <ul class="list" id="countries"></ul>
-      </div>
+
+      <div class="grid" id="travelRegions"></div>
     </section>
 
-    
     <section class="section" id="booksSection">
       <div class="section__kicker">Compounding</div>
       <h2>Books</h2>
       <p id="booksIntro"></p>
 
-      <div class="tabs" role="tablist" aria-label="Books">
-        <button class="tab is-active" type="button" data-tab="exec" role="tab" aria-selected="true">Executive track</button>
-        <button class="tab" type="button" data-tab="team" role="tab" aria-selected="false">Employee library</button>
-      </div>
-
-      <div class="tabPanels">
-        <div class="tabPanel is-active" data-panel="exec" role="tabpanel">
-          <div class="card">
-            <h3>Executive / Leadership track</h3>
-            <ul class="list items" id="booksExec"></ul>
-          </div>
+      <div class="card">
+        <div class="bookTabs" aria-label="Book tabs">
+          <button type="button" data-booktab="executive">Executive track</button>
+          <button type="button" data-booktab="employee">Employee library</button>
         </div>
 
-        <div class="tabPanel" data-panel="team" role="tabpanel">
-          <div class="card">
-            <h3>Employee library</h3>
-            <ul class="list items" id="booksTeam"></ul>
-          </div>
-        </div>
+        <ul class="list items bookList" id="bookList"></ul>
       </div>
     </section>
 
     <section class="section" id="pressSection">
-
       <div class="section__kicker">Public</div>
       <h2>Press & media</h2>
       <p>
-        Add your best interviews, articles, and podcasts. The goal is credibility: high-signal, curated, not spammy.
+        Curated links — high signal only.
       </p>
       <div class="card">
         <h3>Links</h3>
@@ -164,7 +236,7 @@
       <div class="footer__inner">
         <div>
           <div style="font-family: Playfair Display, serif; font-size: 22px; color: var(--text);">JohnPaul Baric</div>
-          <div>Minimal site. Max signal.</div>
+          <div>Black + purple. Minimal. High signal.</div>
         </div>
 
         <div>

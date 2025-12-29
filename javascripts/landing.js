@@ -1,14 +1,3 @@
-/* =========================================================
-   Landing interactions
-   - Canvas reveal blob (IMAGE TWO) over IMAGE ONE
-   - Speed-based fading trails
-   - Wave lines (subtle) that respond to mouse position
-   - Parallax on UI elements
-   - UI color invert when blob overlaps UI elements
-
-   Designed for "out-of-the-box" GitHub Pages hosting.
-   ========================================================= */
-
 (function () {
   "use strict";
 
@@ -20,6 +9,7 @@
 
   const uiInner = document.querySelector(".hero__uiInner");
   const invertables = Array.from(document.querySelectorAll(".invertable"));
+
   const socialLinks = {
     instagram: document.querySelector('[data-social="instagram"]'),
     x: document.querySelector('[data-social="x"]'),
@@ -27,260 +17,263 @@
     linkedin: document.querySelector('[data-social="linkedin"]')
   };
 
-  // Populate from site-data.js (if present)
-  if (window.SITE && window.SITE.social) {
-    if (socialLinks.instagram) socialLinks.instagram.href = window.SITE.social.instagram || "#";
-    if (socialLinks.x) socialLinks.x.href = window.SITE.social.x || "#";
-    if (socialLinks.youtube) socialLinks.youtube.href = window.SITE.social.youtube || "#";
-    if (socialLinks.linkedin) socialLinks.linkedin.href = window.SITE.social.linkedin || "#";
-  }
-
-  // Populate content sections (lists)
+  /* -------------------------
+     Populate from site-data.js
+     ------------------------- */
   function populate() {
     const s = window.SITE;
     if (!s) return;
 
-    const personEl = document.getElementById("tagline");
-    if (personEl && s.person && s.person.tagline) personEl.textContent = s.person.tagline;
+    // Social
+    if (s.social) {
+      if (socialLinks.instagram) socialLinks.instagram.href = s.social.instagram || "#";
+      if (socialLinks.x) socialLinks.x.href = s.social.x || "#";
+      if (socialLinks.youtube) socialLinks.youtube.href = s.social.youtube || "#";
+      if (socialLinks.linkedin) socialLinks.linkedin.href = s.social.linkedin || "#";
+    }
 
-    const projectsEl = document.getElementById("projects");
-    if (projectsEl && s.portfolio && Array.isArray(s.portfolio.whatImBuilding)) {
-      projectsEl.innerHTML = "";
-      s.portfolio.whatImBuilding.forEach((p) => {
+    // Tagline
+    const taglineEl = document.getElementById("tagline");
+    if (taglineEl && s.person && s.person.tagline) taglineEl.textContent = s.person.tagline;
+
+    // BAITA
+    const baita = s.baita || {};
+    const baitaTitle = document.getElementById("baitaTitle");
+    const baitaSubtitle = document.getElementById("baitaSubtitle");
+    const baitaBlurb = document.getElementById("baitaBlurb");
+    const baitaDiff = document.getElementById("baitaDifferentiators");
+    const baitaProd = document.getElementById("baitaProduct");
+    const baitaDeck = document.getElementById("baitaDeck");
+    const baitaEmail = document.getElementById("baitaEmail");
+    const baitaLinkedIn = document.getElementById("baitaLinkedIn");
+    const baitaRaise = document.getElementById("baitaRaise");
+
+    if (baitaTitle) baitaTitle.textContent = baita.title || "BAITA AI";
+    if (baitaSubtitle) baitaSubtitle.textContent = baita.subtitle || "";
+    if (baitaBlurb) baitaBlurb.textContent = baita.blurb || "";
+
+    if (baitaDiff && Array.isArray(baita.differentiators)) {
+      baitaDiff.innerHTML = "";
+      baita.differentiators.forEach((x) => {
         const li = document.createElement("li");
-        const title = document.createElement("strong");
-        title.textContent = p.title || "Project";
-        li.appendChild(title);
-
-        if (p.description) {
-          li.appendChild(document.createTextNode(" — " + p.description));
-        }
-        if (p.link && p.link !== "#") {
-          const a = document.createElement("a");
-          a.href = p.link;
-          a.textContent = "  ↗";
-          a.setAttribute("aria-label", "Open link for " + (p.title || "project"));
-          a.style.marginLeft = "8px";
-          li.appendChild(a);
-        }
-        projectsEl.appendChild(li);
+        li.textContent = x;
+        baitaDiff.appendChild(li);
       });
     }
 
-    const milestonesEl = document.getElementById("milestones");
-    if (milestonesEl && s.portfolio && Array.isArray(s.portfolio.milestones)) {
-      milestonesEl.innerHTML = "";
-      s.portfolio.milestones.forEach((m) => {
+    if (baitaProd && Array.isArray(baita.product)) {
+      baitaProd.innerHTML = "";
+      baita.product.forEach((x) => {
         const li = document.createElement("li");
-        li.textContent = m;
-        milestonesEl.appendChild(li);
+        li.textContent = x;
+        baitaProd.appendChild(li);
       });
     }
 
-    
-    const countriesEl = document.getElementById("countries");
-    const travelIntroEl = document.getElementById("travelIntro");
-    if (travelIntroEl && s.travel && s.travel.intro) travelIntroEl.textContent = s.travel.intro;
+    if (baitaRaise && baita.fundraising) {
+      const pills = [];
+      if (baita.fundraising.round) pills.push(baita.fundraising.round);
+      if (baita.fundraising.valuationCap) pills.push(baita.fundraising.valuationCap);
+      if (baita.fundraising.discount) pills.push(baita.fundraising.discount);
+      baitaRaise.innerHTML = "";
+      pills.forEach((p) => {
+        const span = document.createElement("span");
+        span.className = "pill";
+        span.textContent = p;
+        baitaRaise.appendChild(span);
+      });
+    }
 
-    if (countriesEl && s.travel) {
-      countriesEl.innerHTML = "";
+    if (baitaDeck && baita.deckUrl) baitaDeck.href = baita.deckUrl;
+    if (baitaEmail && baita.investorEmail) {
+      const subj = encodeURIComponent("BAITA Investor Inquiry");
+      baitaEmail.href = "mailto:" + baita.investorEmail + "?subject=" + subj;
+    }
 
-      const addDivider = (label) => {
+    if (baitaLinkedIn) {
+      const li = (baita.investorLinkedIn) || (s.social && s.social.linkedin) || "#";
+      baitaLinkedIn.href = li;
+    }
+
+    // Podcast
+    const pod = s.podcast || {};
+    const podName = document.getElementById("podcastName");
+    const podDesc = document.getElementById("podcastDesc");
+    const podLinks = document.getElementById("podcastLinks");
+    if (podName) podName.textContent = pod.name || "Digital Gold";
+    if (podDesc) podDesc.textContent = pod.description || "";
+    if (podLinks && Array.isArray(pod.links)) {
+      podLinks.innerHTML = "";
+      pod.links.forEach((l) => {
         const li = document.createElement("li");
-        li.className = "list__divider";
-        li.textContent = label;
-        countriesEl.appendChild(li);
-      };
+        const a = document.createElement("a");
+        a.href = l.url || "#";
+        a.target = "_blank";
+        a.rel = "noreferrer";
+        a.textContent = l.label || "Link";
+        li.appendChild(a);
+        podLinks.appendChild(li);
+      });
+    }
 
-      const addCountry = (name) => {
+    // Social Proof
+    const sp = s.socialProof || {};
+    const spFollowers = document.getElementById("spFollowers");
+    const spViews = document.getElementById("spViews");
+    const spPlatforms = document.getElementById("spPlatforms");
+    const spViral = document.getElementById("spViral");
+    const spDrPhil = document.getElementById("spDrPhil");
+    const spImg = document.getElementById("spImg");
+    const spNotes = document.getElementById("spNotes");
+
+    if (spFollowers) spFollowers.textContent = sp.tiktokFollowers || "—";
+    if (spViews) spViews.textContent = sp.viralViews || "—";
+    if (spPlatforms) spPlatforms.textContent = sp.platforms || "";
+    if (spViral && sp.viralUrl) spViral.href = sp.viralUrl;
+    if (spDrPhil && sp.drPhilUrl) spDrPhil.href = sp.drPhilUrl;
+    if (spImg && sp.screenshot) spImg.src = sp.screenshot;
+
+    if (spNotes && Array.isArray(sp.notes)) {
+      spNotes.innerHTML = "";
+      sp.notes.forEach((n) => {
         const li = document.createElement("li");
-        li.textContent = name;
-        countriesEl.appendChild(li);
-      };
+        li.textContent = n;
+        spNotes.appendChild(li);
+      });
+    }
 
-      if (Array.isArray(s.travel.regions) && s.travel.regions.length) {
-        s.travel.regions.forEach((r) => {
-          if (r && r.name) addDivider(r.name);
-          if (r && Array.isArray(r.countries)) r.countries.forEach(addCountry);
+    // Travel
+    const travelIntro = document.getElementById("travelIntro");
+    const travelWrap = document.getElementById("travelRegions");
+    if (travelIntro && s.travel && s.travel.intro) travelIntro.textContent = s.travel.intro;
+
+    if (travelWrap && s.travel && Array.isArray(s.travel.regions)) {
+      travelWrap.innerHTML = "";
+      s.travel.regions.forEach((r) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        const h3 = document.createElement("h3");
+        h3.textContent = r.name;
+        const ul = document.createElement("ul");
+        ul.className = "list";
+        (r.countries || []).forEach((c) => {
+          const li = document.createElement("li");
+          li.textContent = c;
+          ul.appendChild(li);
         });
-      } else if (Array.isArray(s.travel.countries) && s.travel.countries.length) {
-        s.travel.countries.forEach(addCountry);
-      } else {
-        const li = document.createElement("li");
-        li.textContent = "Add your travel list in javascripts/site-data.js → SITE.travel.regions / SITE.travel.countries";
-        countriesEl.appendChild(li);
-      }
-    }
-
-    const booksIntroEl = document.getElementById("booksIntro");
-    if (booksIntroEl && s.books && s.books.intro) booksIntroEl.textContent = s.books.intro;
-
-    const booksExecEl = document.getElementById("booksExec");
-    const booksTeamEl = document.getElementById("booksTeam");
-
-    const bookHref = (b) => {
-      if (b && b.url) return b.url;
-      const q = encodeURIComponent(((b?.title || "") + " " + (b?.author || "")).trim());
-      return "https://www.goodreads.com/search?q=" + q;
-    };
-
-    const renderBookList = (listEl, list, emptyMessage) => {
-      if (!listEl) return;
-      listEl.innerHTML = "";
-
-      if (!Array.isArray(list) || list.length === 0) {
-        const li = document.createElement("li");
-        li.textContent = emptyMessage;
-        listEl.appendChild(li);
-        return;
-      }
-
-      list.forEach((b) => {
-        const li = document.createElement("li");
-
-        const hasDetails = !!(b.synopsis || b.takeaway || b.why);
-
-        if (hasDetails) {
-          const details = document.createElement("details");
-          const summary = document.createElement("summary");
-
-          const a = document.createElement("a");
-          a.href = bookHref(b);
-          a.target = "_blank";
-          a.rel = "noreferrer";
-          a.textContent = b.title || "Book";
-          summary.appendChild(a);
-
-          if (b.author) summary.appendChild(document.createTextNode(" — " + b.author));
-
-          details.appendChild(summary);
-
-          const meta = document.createElement("div");
-          meta.className = "bookMeta";
-
-          if (b.synopsis) {
-            const p = document.createElement("p");
-            const strong = document.createElement("strong");
-            strong.textContent = "Synopsis:";
-            p.appendChild(strong);
-            p.appendChild(document.createTextNode(" " + b.synopsis));
-            meta.appendChild(p);
-          }
-
-          if (b.takeaway) {
-            const p = document.createElement("p");
-            const strong = document.createElement("strong");
-            strong.textContent = "Key takeaway:";
-            p.appendChild(strong);
-            p.appendChild(document.createTextNode(" " + b.takeaway));
-            meta.appendChild(p);
-          }
-
-          if (b.why) {
-            const p = document.createElement("p");
-            const strong = document.createElement("strong");
-            strong.textContent = "Why it matters:";
-            p.appendChild(strong);
-            p.appendChild(document.createTextNode(" " + b.why));
-            meta.appendChild(p);
-          }
-
-          details.appendChild(meta);
-          li.appendChild(details);
-        } else {
-          const a = document.createElement("a");
-          a.href = bookHref(b);
-          a.target = "_blank";
-          a.rel = "noreferrer";
-          a.textContent = b.title || "Book";
-          li.appendChild(a);
-
-          if (b.author) {
-            const span = document.createElement("span");
-            span.textContent = " — " + b.author;
-            li.appendChild(span);
-          }
-        }
-
-        listEl.appendChild(li);
+        card.appendChild(h3);
+        card.appendChild(ul);
+        travelWrap.appendChild(card);
       });
-    };
-
-    if (s.books) {
-      renderBookList(
-        booksExecEl,
-        s.books.execTrack || s.books.executiveTrack || [],
-        "Add books in javascripts/site-data.js → SITE.books.execTrack"
-      );
-
-      renderBookList(
-        booksTeamEl,
-        s.books.employeeLibrary || s.books.list || [],
-        "Add books in javascripts/site-data.js → SITE.books.employeeLibrary"
-      );
     }
-const pressEl = document.getElementById("press");
+
+    // Speaking
+    const speakIntro = document.getElementById("speakingIntro");
+    const speakGallery = document.getElementById("speakingGallery");
+    if (speakIntro && s.speaking && s.speaking.intro) speakIntro.textContent = s.speaking.intro;
+    if (speakGallery && s.speaking && Array.isArray(s.speaking.photos)) {
+      speakGallery.innerHTML = "";
+      s.speaking.photos.forEach((p) => {
+        const a = document.createElement("a");
+        a.href = p.src;
+        a.target = "_blank";
+        a.rel = "noreferrer";
+
+        const fig = document.createElement("figure");
+        fig.style.margin = "0";
+
+        const img = document.createElement("img");
+        img.src = p.src;
+        img.alt = p.caption || "Speaking photo";
+
+        const cap = document.createElement("figcaption");
+        cap.textContent = p.caption || "";
+
+        fig.appendChild(img);
+        fig.appendChild(cap);
+        a.appendChild(fig);
+        speakGallery.appendChild(a);
+      });
+    }
+
+    // Books
+    const booksIntro = document.getElementById("booksIntro");
+    if (booksIntro && s.books && s.books.intro) booksIntro.textContent = s.books.intro;
+
+    const bookTabBtns = Array.from(document.querySelectorAll("[data-booktab]"));
+    const bookList = document.getElementById("bookList");
+
+    function renderBooks(which) {
+      if (!bookList || !s.books) return;
+
+      const list = which === "executive" ? s.books.executive : s.books.employee;
+      bookList.innerHTML = "";
+
+      (list || []).forEach((b) => {
+        const li = document.createElement("li");
+
+        const a = document.createElement("a");
+        a.href = b.url || "#";
+        a.target = "_blank";
+        a.rel = "noreferrer";
+        a.textContent = b.title || "Book";
+        li.appendChild(a);
+
+        const meta = document.createElement("div");
+        meta.className = "bookMeta";
+        const bits = [];
+        if (b.author) bits.push(b.author);
+        if (b.synopsis) bits.push(b.synopsis);
+        if (b.takeaway) bits.push("Key takeaway: " + b.takeaway);
+        if (b.why) bits.push("Why: " + b.why);
+        meta.textContent = bits.join(" — ");
+        li.appendChild(meta);
+
+        bookList.appendChild(li);
+      });
+    }
+
+    function setTab(which) {
+      bookTabBtns.forEach((b) => b.classList.toggle("is-active", b.dataset.booktab === which));
+      renderBooks(which);
+    }
+
+    bookTabBtns.forEach((b) => b.addEventListener("click", () => setTab(b.dataset.booktab)));
+    setTab("executive");
+
+    // Press
+    const pressEl = document.getElementById("press");
     if (pressEl && Array.isArray(s.press)) {
       pressEl.innerHTML = "";
-      if (s.press.length === 0) {
+      s.press.forEach((p) => {
         const li = document.createElement("li");
-        li.textContent = "Add press links in javascripts/site-data.js → SITE.press";
-        pressEl.appendChild(li);
-      } else {
-        s.press.forEach((p) => {
-          const li = document.createElement("li");
-          const a = document.createElement("a");
-          a.href = p.url || "#";
-          a.target = "_blank";
-          a.rel = "noreferrer";
-          a.textContent = p.title || "Press";
-          li.appendChild(a);
+        const a = document.createElement("a");
+        a.href = p.url || "#";
+        a.target = "_blank";
+        a.rel = "noreferrer";
+        a.textContent = p.title || "Link";
+        li.appendChild(a);
 
-          const meta = [];
-          if (p.outlet) meta.push(p.outlet);
-          if (p.date) meta.push(p.date);
-          if (meta.length) {
-            const span = document.createElement("span");
-            span.textContent = " — " + meta.join(" · ");
-            li.appendChild(span);
-          }
-          pressEl.appendChild(li);
-        });
-      }
+        const meta = [];
+        if (p.outlet) meta.push(p.outlet);
+        if (p.date) meta.push(p.date);
+        if (meta.length) {
+          const span = document.createElement("span");
+          span.textContent = " — " + meta.join(" · ");
+          li.appendChild(span);
+        }
+        pressEl.appendChild(li);
+      });
     }
 
+    // Contact
     const emailEl = document.getElementById("emailLink");
     if (emailEl && s.contact && s.contact.email) {
       emailEl.href = "mailto:" + s.contact.email;
       emailEl.textContent = s.contact.email;
     }
   }
-
-
-  function setupBookTabs() {
-    const tabButtons = Array.from(document.querySelectorAll(".tabs .tab"));
-    const panels = Array.from(document.querySelectorAll(".tabPanel"));
-    if (!tabButtons.length || !panels.length) return;
-
-    const activate = (key) => {
-      tabButtons.forEach((btn) => {
-        const isActive = btn.dataset.tab === key;
-        btn.classList.toggle("is-active", isActive);
-        btn.setAttribute("aria-selected", isActive ? "true" : "false");
-      });
-
-      panels.forEach((p) => {
-        const isActive = p.dataset.panel === key;
-        p.classList.toggle("is-active", isActive);
-      });
-    };
-
-    tabButtons.forEach((btn) => {
-      btn.addEventListener("click", () => activate(btn.dataset.tab));
-    });
-  }
   populate();
-  setupBookTabs();
 
   /* -------------------------
      Headgear widget
@@ -291,7 +284,8 @@ const pressEl = document.getElementById("press");
     none: "",
     miner: "images/overlays/miner-hat.svg",
     vibecoder: "images/overlays/vibecoder-headset.svg",
-    ski: "images/overlays/ski-helmet.svg"
+    ski: "images/overlays/ski-helmet.svg",
+    space: "images/overlays/space-helmet.svg"
   };
 
   function setGear(key) {
@@ -302,7 +296,7 @@ const pressEl = document.getElementById("press");
     overlayImg.alt = key === "none" ? "" : key + " overlay";
   }
 
-  setGear("miner");
+  setGear("space");
   gearButtons.forEach((b) => b.addEventListener("click", () => setGear(b.dataset.gear)));
 
   /* -------------------------
@@ -345,7 +339,6 @@ const pressEl = document.getElementById("press");
 
     ctx.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
 
-    // Initialize positions
     if (state.pointer.x === 0 && state.pointer.y === 0) {
       state.pointer.x = state.w * 0.5;
       state.pointer.y = state.h * 0.52;
@@ -355,14 +348,6 @@ const pressEl = document.getElementById("press");
       state.prevBlob.y = state.blob.y;
     }
   }
-
-  window.addEventListener("resize", () => {
-    resize();
-    if (state.imagesReady && (prefersReducedMotion || !hoverCapable)) {
-      renderStatic();
-    }
-  }, { passive: true });
-  resize();
 
   function drawCover(img, dx, dy, extraScale) {
     if (!img || !img.width || !img.height) return;
@@ -378,11 +363,17 @@ const pressEl = document.getElementById("press");
     const y = (state.h - dh) * 0.5 + dy;
 
     ctx.drawImage(img, x, y, dw, dh);
+
+    // darken overlay for readability (subtle)
+    ctx.save();
+    ctx.fillStyle = "rgba(0,0,0,0.25)";
+    ctx.fillRect(0, 0, state.w, state.h);
+    ctx.restore();
   }
 
   function blobPath(cx, cy, r, timeMs) {
     const points = 14;
-    const wobble = 0.12; // higher = more organic
+    const wobble = 0.12;
     const speed = 0.0025;
 
     const pts = [];
@@ -435,7 +426,6 @@ const pressEl = document.getElementById("press");
       return;
     }
 
-    // Blob coordinates are relative to the hero; DOM rects are viewport-based.
     const heroRect = hero.getBoundingClientRect();
     const cx = heroRect.left + state.blob.x;
     const cy = heroRect.top + state.blob.y;
@@ -458,10 +448,9 @@ const pressEl = document.getElementById("press");
     ctx.globalAlpha = 0.16;
     ctx.lineWidth = 1;
 
-    // Slightly respond to cursor with gentle phase shift
     const phase = timeMs * 0.0012 + nx * 0.9;
 
-    ctx.strokeStyle = "rgba(255,255,255,0.22)";
+    ctx.strokeStyle = "rgba(167,139,250,0.28)";
     for (let i = 0; i < lines; i++) {
       const y0 = margin + ((state.h - margin * 2) * i) / (lines - 1);
       const amp = ampBase * (0.7 + i * 0.06) * (1 + Math.abs(ny) * 0.5);
@@ -488,17 +477,15 @@ const pressEl = document.getElementById("press");
 
   function tick(t) {
     if (prefersReducedMotion || !hoverCapable) {
-      // Static render: show IMAGE ONE only.
       renderStatic();
       return;
     }
 
     if (!state.imagesReady) {
       ctx.clearRect(0, 0, state.w, state.h);
-      ctx.fillStyle = "#ffffff";
+      ctx.fillStyle = "#05030a";
       ctx.fillRect(0, 0, state.w, state.h);
-      // Minimal loading text
-      ctx.fillStyle = "rgba(11,11,12,0.55)";
+      ctx.fillStyle = "rgba(217,204,255,0.65)";
       ctx.font = "14px ui-sans-serif, system-ui, -apple-system";
       ctx.fillText("Loading…", 24, 34);
       requestAnimationFrame(tick);
@@ -509,27 +496,22 @@ const pressEl = document.getElementById("press");
     const dt = state.lastT ? Math.min(40, t - state.lastT) : 16.7;
     state.lastT = t;
 
-    // Smooth-follow blob position
     const follow = 0.12;
     state.blob.x += (state.pointer.x - state.blob.x) * follow;
     state.blob.y += (state.pointer.y - state.blob.y) * follow;
 
-    // Speed estimate
     const dx = state.blob.x - state.prevBlob.x;
     const dy = state.blob.y - state.prevBlob.y;
-    const speed = Math.sqrt(dx * dx + dy * dy) / Math.max(1, dt); // px per ms
+    const speed = Math.sqrt(dx * dx + dy * dy) / Math.max(1, dt);
     state.prevBlob.x = state.blob.x;
     state.prevBlob.y = state.blob.y;
 
-    // Visibility easing
     const targetVis = state.pointer.inside ? 1 : 0;
     state.blob.visibility += (targetVis - state.blob.visibility) * 0.08;
 
-    // Blob size responds to speed (subtle)
     const baseR = 150;
     state.blob.r = clamp(baseR + speed * 800, 120, 230);
 
-    // Spawn trails when moving fast
     if (state.pointer.inside && speed > 0.18) {
       const count = clamp(Math.round(speed * 6), 1, 3);
       for (let i = 0; i < count; i++) {
@@ -542,7 +524,6 @@ const pressEl = document.getElementById("press");
       }
     }
 
-    // Fade trails
     for (let i = state.trails.length - 1; i >= 0; i--) {
       const tr = state.trails[i];
       tr.a *= Math.pow(0.90, dt / 16.7);
@@ -550,7 +531,6 @@ const pressEl = document.getElementById("press");
       if (tr.a < 0.02 || tr.r < 10) state.trails.splice(i, 1);
     }
 
-    // Parallax (opposite direction)
     const nx = (state.pointer.x / state.w - 0.5) * 2;
     const ny = (state.pointer.y / state.h - 0.5) * 2;
     const px = -nx * 10;
@@ -558,14 +538,11 @@ const pressEl = document.getElementById("press");
     hero.style.setProperty("--parallax-x", px.toFixed(2) + "px");
     hero.style.setProperty("--parallax-y", py.toFixed(2) + "px");
 
-    // Draw base
     ctx.clearRect(0, 0, state.w, state.h);
     drawCover(imgA, px * 0.5, py * 0.5, 1);
 
-    // Waves (subtle)
     drawWaves(t, clamp(speed * 2.5, 0, 1), nx, ny);
 
-    // Reveal trails (fading)
     const vis = state.blob.visibility;
     if (vis > 0.01) {
       for (let i = 0; i < state.trails.length; i++) {
@@ -580,7 +557,6 @@ const pressEl = document.getElementById("press");
         ctx.restore();
       }
 
-      // Main blob (organic)
       ctx.save();
       ctx.globalAlpha = 1 * vis;
       blobPath(state.blob.x, state.blob.y, state.blob.r, t);
@@ -588,11 +564,10 @@ const pressEl = document.getElementById("press");
       drawCover(imgB, px * 0.5, py * 0.5, 1);
       ctx.restore();
 
-      // Optional faint outline for definition
       ctx.save();
-      ctx.globalAlpha = 0.18 * vis;
+      ctx.globalAlpha = 0.24 * vis;
       ctx.lineWidth = 1.2;
-      ctx.strokeStyle = "rgba(255,255,255,0.9)";
+      ctx.strokeStyle = "rgba(167,139,250,0.85)";
       blobPath(state.blob.x, state.blob.y, state.blob.r, t);
       ctx.stroke();
       ctx.restore();
@@ -603,17 +578,23 @@ const pressEl = document.getElementById("press");
     requestAnimationFrame(tick);
   }
 
+  window.addEventListener(
+    "resize",
+    () => {
+      resize();
+      if (state.imagesReady && (prefersReducedMotion || !hoverCapable)) renderStatic();
+    },
+    { passive: true }
+  );
+  resize();
+
   function startWhenReady() {
     if (imgA.complete && imgB.complete && imgA.naturalWidth && imgB.naturalWidth) {
       state.imagesReady = true;
-
-      // If we're not running the animation loop (mobile / reduced motion),
-      // do one static render immediately.
       if (prefersReducedMotion || !hoverCapable) {
         renderStatic();
         return;
       }
-
       requestAnimationFrame(tick);
       return;
     }
@@ -621,7 +602,6 @@ const pressEl = document.getElementById("press");
   }
   startWhenReady();
 
-  // Pointer handlers
   function setFromEvent(e) {
     const rect = hero.getBoundingClientRect();
     state.pointer.x = clamp(e.clientX - rect.left, 0, rect.width);
