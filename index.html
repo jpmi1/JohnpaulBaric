@@ -1,69 +1,181 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>JohnPaul Baric</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JohnPaul Baric</title>
 
-            ga('create', 'UA-65203435-1', 'auto');
-            ga('require', 'linkid', 'linkid.js');
-            ga('send', 'pageview');
-        </script>
-        <!-- Hotjar Tracking Code for www.johnpaulbaric.com -->
-        <script>
-            (function(h,o,t,j,a,r){
-                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-                h._hjSettings={hjid:55781,hjsv:5};
-                a=o.getElementsByTagName('head')[0];
-                r=o.createElement('script');r.async=1;
-                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-                a.appendChild(r);
-            })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
-        </script>
-        <!--Email account via Google-->
-        <meta name="google-site-verification" content="q5b1dgiEZxtO61WcZIBKE08a9x5kZm52XqmSxS_akTI" />
-	</head>
-	<body>
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
-		<!-- Header -->
-			<section id="header">
-				<header>
-					<span class="image avatar"><img src="images/avatar.jpg" alt="" /></span>
-					<h1 id="logo"><a href="#">JohnPaul Baric</a></h1>
-					<p>Don't tell me you can do something show me you can do it.</p>
-				</header>
-				<footer>
-					<ul class="icons">
-						<li><a href="https://twitter.com/jpmi1" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="https://www.facebook.com/johnpaul.baric" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="https://www.linkedin.com/pub/johnpaul-baric/64/2a7/637" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li>
-						<li><a href="https://github.com/jpmi1" class="icon fa-github"><span class="label">Github</span></a></li>
-						<li><a href="mailto:jpmimln@gmail.com?subject=Contacting%20You%20From%20the%20Internet" class="icon fa-envelope"><span class="label">Email</span></a></li>
-                        <li><a href="https://medium.com/@jpmi1" class="icon fa-medium"><span class="label">Medium</span></a></li>
-					</ul>
-				</footer>
-			</section>
+  <link rel="stylesheet" href="stylesheets/landing.css" />
+</head>
+
+<body>
+  <!-- HERO -->
+  <header class="hero" id="top" aria-label="Hero">
+    <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+
+    <div class="hero__ui" aria-hidden="false">
+      <div class="hero__uiInner">
+        <a class="hero__name invertable" href="#top" aria-label="Home">
+          <span>JohnPaul</span>
+          <span>Baric</span>
+        </a>
+
+        <nav class="hero__nav" aria-label="Primary">
+          <a class="invertable" href="#portfolio">Portfolio</a>
+        </nav>
+
+        <div class="hero__social" aria-label="Social links">
+          <a class="hero__icon invertable" data-social="instagram" href="#" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <!-- Solid Instagram icon -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5A5.5 5.5 0 1 1 6.5 14 5.5 5.5 0 0 1 12 8.5zm0 2A3.5 3.5 0 1 0 15.5 14 3.5 3.5 0 0 0 12 10.5zM18 6.8a1.2 1.2 0 1 1-1.2-1.2A1.2 1.2 0 0 1 18 6.8z"/>
+            </svg>
+          </a>
+
+          <a class="hero__icon invertable" data-social="x" href="#" target="_blank" rel="noreferrer" aria-label="X / Twitter">
+            <!-- Solid X icon -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18.9 2H22l-7.4 8.5L23 22h-6.7l-5.2-6.7L4.9 22H2l8-9.2L1 2h6.9l4.7 6.1L18.9 2zm-1.2 18h1.7L7.1 3.9H5.3L17.7 20z"/>
+            </svg>
+          </a>
+
+          <a class="hero__icon invertable" data-social="youtube" href="#" target="_blank" rel="noreferrer" aria-label="YouTube">
+            <!-- Solid YouTube icon -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.6 12 4.6 12 4.6s-5.8 0-7.5.5A3 3 0 0 0 2.4 7.2 31.7 31.7 0 0 0 2 12a31.7 31.7 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.5 7.5.5 7.5.5s5.8 0 7.5-.5a3 3 0 0 0 2.1-2.1A31.7 31.7 0 0 0 22 12a31.7 31.7 0 0 0-.4-4.8zM10 15.5v-7l6 3.5-6 3.5z"/>
+            </svg>
+          </a>
+
+          <a class="hero__icon invertable" data-social="linkedin" href="#" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <!-- Solid LinkedIn icon -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.5 2H3.5A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5.5V9H8v10zM6.75 7.8A1.45 1.45 0 1 1 8.2 6.35 1.45 1.45 0 0 1 6.75 7.8zM19 19h-2.5v-5.3c0-1.26 0-2.88-1.75-2.88s-2 1.37-2 2.79V19H10.3V9h2.4v1.37h.03A2.63 2.63 0 0 1 15.1 9c2.52 0 3.9 1.66 3.9 4.78V19z"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="hero__hint invertable">Scroll</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main>
+    <section class="section" id="portfolio">
+      <div class="section__kicker">Portfolio</div>
+      <h2 id="tagline">Operator. Builder. Long-term thinker.</h2>
+      <p>
+        This page is designed to be edited like a living document: swap the photos, update the lists,
+        and ship. The hero interaction is the hook. The sections below are the proof.
+      </p>
+
+      <div class="grid">
+        <div class="card portfolio__left">
+          <h3>Suit up</h3>
+          <p style="margin-top: 0;">
+            Quick “headgear” mode for personality: mining / vibe-coding / skiing.
+            Replace the SVG overlays with custom PNGs if you want realism.
+          </p>
+
+          <div class="headgear">
+            <div class="headgear__stage" aria-label="Headgear preview">
+              <img src="images/headshot.jpg" alt="Headshot" />
+              <img class="headgear__overlay" id="headgearOverlay" alt="" />
+            </div>
+
+            <div class="headgear__controls" aria-label="Headgear controls">
+              <button type="button" data-gear="miner">Mining</button>
+              <button type="button" data-gear="vibecoder">Vibe</button>
+              <button type="button" data-gear="ski">Ski</button>
+              <button type="button" data-gear="none">None</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card portfolio__right">
+          <h3>What I'm building</h3>
+          <ul class="list items" id="projects"></ul>
+
+          <div style="height: 18px;"></div>
+
+          <h3>Milestones</h3>
+          <ul class="list" id="milestones"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="travel">
+      <div class="section__kicker">Life</div>
+      <h2>Travel map</h2>
+      <p id="travelIntro"></p>
+      <div class="card">
+        <h3>Countries &amp; territories visited</h3>
+        <ul class="list" id="countries"></ul>
+      </div>
+    </section>
+
     
-                
+    <section class="section" id="booksSection">
+      <div class="section__kicker">Compounding</div>
+      <h2>Books</h2>
+      <p id="booksIntro"></p>
 
-		<!-- Scripts -->
-            <script src="javascripts/main.js"></script>
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-            <script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollzer.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+      <div class="tabs" role="tablist" aria-label="Books">
+        <button class="tab is-active" type="button" data-tab="exec" role="tab" aria-selected="true">Executive track</button>
+        <button class="tab" type="button" data-tab="team" role="tab" aria-selected="false">Employee library</button>
+      </div>
 
-	</body>
+      <div class="tabPanels">
+        <div class="tabPanel is-active" data-panel="exec" role="tabpanel">
+          <div class="card">
+            <h3>Executive / Leadership track</h3>
+            <ul class="list items" id="booksExec"></ul>
+          </div>
+        </div>
+
+        <div class="tabPanel" data-panel="team" role="tabpanel">
+          <div class="card">
+            <h3>Employee library</h3>
+            <ul class="list items" id="booksTeam"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pressSection">
+
+      <div class="section__kicker">Public</div>
+      <h2>Press & media</h2>
+      <p>
+        Add your best interviews, articles, and podcasts. The goal is credibility: high-signal, curated, not spammy.
+      </p>
+      <div class="card">
+        <h3>Links</h3>
+        <ul class="list items" id="press"></ul>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div>
+          <div style="font-family: Playfair Display, serif; font-size: 22px; color: var(--text);">JohnPaul Baric</div>
+          <div>Minimal site. Max signal.</div>
+        </div>
+
+        <div>
+          <div style="font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;">Contact</div>
+          <a id="emailLink" href="mailto:hello@johnpaulbaric.com">hello@johnpaulbaric.com</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="javascripts/site-data.js"></script>
+  <script src="javascripts/landing.js"></script>
+</body>
 </html>
