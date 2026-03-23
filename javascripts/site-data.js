@@ -2,17 +2,17 @@ window.SITE = {
   "person": {
     "firstName": "JohnPaul",
     "lastName": "Baric",
-    "tagline": "Bitcoin mining operator • builder • media-first founder"
+    "tagline": "Founder building BAITA • operator • earned distribution"
   },
   "social": {
     "instagram": "https://www.instagram.com/johnpaulbaric/",
     "x": "https://x.com/BaricJohnpaul",
-    "youtube": "https://www.youtube.com/@jpmi1",
+    "youtube": "https://www.youtube.com/@JohnPaulBaric",
     "linkedin": "https://www.linkedin.com/in/jp-baric-6372a764/"
   },
   "podcast": {
     "name": "Digital Gold",
-    "description": "Long-form conversations on Bitcoin, energy, infrastructure, and how the next financial rails get built.",
+    "description": "Long-form conversations on Bitcoin, energy, infrastructure, and the people building hard things.",
     "links": [
       {
         "label": "Apple Podcasts",
@@ -34,18 +34,18 @@ window.SITE = {
   },
   "baita": {
     "title": "BAITA AI",
-    "subtitle": "Self-Optimizing Business AI Agents",
-    "blurb": "BAITA is focused on automating pools of work — turning messy, high-friction workflows into outcome-driven agents.",
+    "subtitle": "Self-Configuring AI Front Desk for Flood Restoration Companies",
+    "blurb": "BAITA is building a voice-first front desk for flood restoration companies. The software learns how the business operates instead of forcing the owner to configure call flows, FAQs, and routing logic by hand.",
     "differentiators": [
-      "Deliberate reasoning and problem-solving beyond rapid pattern-matching",
-      "Learns, adapts, and optimizes quickly with minimal compute",
-      "Designed for well-defined, rule-obeying behavior (reduces hallucinations)",
-      "Needs significantly less training data and feedback per customer"
+      "Compiles an operating model from a company's website, business profile, and a short voice conversation",
+      "Replaces setup-heavy receptionist tools with software that learns the business instead of demanding configuration",
+      "Handles emergency versus non-emergency routing using the company's actual service area, hours, and intake rules",
+      "Expands over time by flagging edge cases, asking targeted follow-ups, and tightening the action graph"
     ],
     "product": [
-      "First product: CRM automation for cold outbound",
-      "Automatically optimizes email copy per customer to improve conversions",
-      "Human-in-the-loop tuning so sales teams can steer optimization"
+      "Start with flood and water damage restoration companies where answered calls can win $50K-$500K jobs",
+      "Capture scope of damage, urgency, insurance details, and the next action without owner babysitting",
+      "Voice-native onboarding turns a five-minute setup conversation into the initial front desk model"
     ],
     "fundraising": {
       "round": "$3M SAFE",
@@ -57,15 +57,15 @@ window.SITE = {
     "investorLinkedIn": "https://www.linkedin.com/in/jp-baric-6372a764/"
   },
   "socialProof": {
-    "tiktokFollowers": "490.9K",
-    "viralViews": "34M+",
-    "platforms": "TikTok + cross-platform reposts",
-    "viralUrl": "https://www.tiktok.com/@jpbaric/video/7255423959196339498",
-    "drPhilUrl": "https://www.youtube.com/watch?v=UihEYa2MgVs",
+    "tiktokFollowers": "480K+",
+    "viralViews": "130M+",
+    "platforms": "TikTok, podcast, conferences, and mainstream media reach that compounds across channels.",
+    "viralUrl": "https://www.tiktok.com/@jpbaric/video/7031284139311533318",
+    "drPhilUrl": "https://www.drphil.com/videos/crypto-is-leveling-the-playing-field-between-the-haves-and-the-have-nots-says-ceo-of/",
     "screenshot": "images/social/tiktok-viral.png",
     "notes": [
-      "Viral video that triggered mainstream attention",
-      "Appeared on Dr. Phil’s crypto episode after the clip took off"
+      "Built crypto mining into a repeatable distribution engine, not a one-off viral moment",
+      "That reach translated into Dr. Phil, industry podcasts, and conference stages"
     ]
   },
   "travel": {

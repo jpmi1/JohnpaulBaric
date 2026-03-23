@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>JohnPaul Baric</title>
+  <meta name="description" content="JohnPaul Baric's founder site: BAITA, earned distribution, speaking, podcast, and public proof." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500&f[]=general-sans@400,500,600&display=swap">
+  <link rel="icon" href="images/headshot.jpg" />
 
   <link rel="stylesheet" href="stylesheets/landing.css" />
 </head>
@@ -26,6 +26,7 @@
 
         <nav class="hero__nav" aria-label="Primary">
           <a class="invertable" href="#portfolio">Portfolio</a>
+          <a class="invertable" href="now.html">Now</a>
         </nav>
 
         <div class="hero__social" aria-label="Social links">
@@ -65,22 +66,22 @@
       <div class="section__kicker">Portfolio</div>
       <h2 id="tagline">Builder. Operator. Media-first founder.</h2>
       <p>
-        This is a one-page proof deck: what I’m building, where I’ve been, and why people pay attention.
-        Designed to ship fast and update continuously.
+        A one-page founder deck for what I am building with BAITA, the distribution I already own, and the proof behind it.
+        Designed to stay current without turning into a bloated company site.
       </p>
 
       <div class="grid">
         <div class="card card--accent portfolio__baita">
           <h3 id="baitaTitle">BAITA AI</h3>
-          <div style="font-family: Playfair Display, serif; font-size: 22px; margin-bottom: 10px;" id="baitaSubtitle"></div>
-          <p id="baitaBlurb" style="margin-top:0;"></p>
+          <div class="displayText displayText--sm" id="baitaSubtitle"></div>
+          <p id="baitaBlurb" class="cardCopy cardCopy--tight"></p>
 
           <div class="split">
             <div>
               <h3>Why it’s different</h3>
               <ul class="list" id="baitaDifferentiators"></ul>
 
-              <div style="height: 10px;"></div>
+              <div class="spacer-sm" aria-hidden="true"></div>
 
               <h3>First wedge</h3>
               <ul class="list" id="baitaProduct"></ul>
@@ -96,9 +97,9 @@
 
             <div>
               <h3>Intent</h3>
-              <p style="margin-top:0;">
-                If you invest in execution, not hype: reach out. I’m building an application-layer agent system that aims to
-                replace repetitive work with measurable outcomes.
+              <p class="cardCopy cardCopy--tight">
+                BAITA is starting with flood restoration because missed calls are expensive and software setup is usually the bottleneck.
+                The bet is simple: make the software learn the business instead of forcing the owner to become the implementer.
               </p>
 
               <div class="stat">
@@ -112,7 +113,7 @@
                 </div>
               </div>
 
-              <div style="height: 12px;"></div>
+              <div class="spacer-md" aria-hidden="true"></div>
 
               <div class="stat">
                 <div>
@@ -120,8 +121,8 @@
                   <div class="stat__value">25%</div>
                 </div>
                 <div>
-                  <div class="stat__label">Focus</div>
-                  <div class="stat__value">B2B</div>
+                  <div class="stat__label">Wedge</div>
+                  <div class="stat__value">Flood restoration</div>
                 </div>
               </div>
             </div>
@@ -133,42 +134,42 @@
 
           <div class="stat">
             <div>
-              <div class="stat__label">TikTok followers</div>
+              <div class="stat__label">TikTok audience</div>
               <div class="stat__value" id="spFollowers">—</div>
             </div>
             <div>
-              <div class="stat__label">Viral views</div>
+              <div class="stat__label">Top content views</div>
               <div class="stat__value" id="spViews">—</div>
             </div>
           </div>
 
-          <p id="spPlatforms" style="margin: 14px 0 16px;"></p>
+          <p id="spPlatforms" class="cardCopy socialProof__copy"></p>
 
-          <div style="border-radius:16px; overflow:hidden; border:1px solid rgba(217,204,255,0.14);">
-            <img id="spImg" src="images/social/tiktok-viral.png" alt="Viral TikTok screenshot" style="width:100%; display:block;" />
+          <div class="mediaFrame">
+            <img id="spImg" src="images/social/tiktok-viral.png" alt="Viral TikTok screenshot" />
           </div>
 
-          <div class="buttonRow" style="margin-top: 14px;">
+          <div class="buttonRow buttonRow--tight">
             <a class="btn btn--primary" id="spViral" href="#" target="_blank" rel="noreferrer">Viral video</a>
             <a class="btn" id="spDrPhil" href="#" target="_blank" rel="noreferrer">Dr. Phil appearance</a>
           </div>
 
-          <div style="height: 10px;"></div>
+          <div class="spacer-sm" aria-hidden="true"></div>
           <ul class="list" id="spNotes"></ul>
         </div>
 
         <div class="card portfolio__podcast">
           <h3>Podcast</h3>
-          <div style="font-family: Playfair Display, serif; font-size: 24px; margin-bottom: 8px;" id="podcastName">Digital Gold</div>
-          <p id="podcastDesc" style="margin-top:0;"></p>
+          <div class="displayText displayText--md" id="podcastName">Digital Gold</div>
+          <p id="podcastDesc" class="cardCopy cardCopy--tight"></p>
           <h3>Listen</h3>
           <ul class="list items" id="podcastLinks"></ul>
         </div>
 
         <div class="card portfolio__suit">
-          <h3>Suit up</h3>
-          <p style="margin-top: 0;">
-            Quick “identity overlays” for personality. Swap the SVGs for photoreal cutouts any time.
+          <h3>Content modes</h3>
+          <p class="cardCopy cardCopy--tight">
+            A lightweight preview of visual identities that show up in content, events, and campaign concepts.
           </p>
 
           <div class="headgear">
@@ -179,7 +180,7 @@
 
             <div class="headgear__controls" aria-label="Headgear controls">
               <button type="button" data-gear="miner">Mining</button>
-              <button type="button" data-gear="vibecoder">Vibe</button>
+              <button type="button" data-gear="vibecoder">Studio</button>
               <button type="button" data-gear="ski">Ski</button>
               <button type="button" data-gear="space">Space</button>
               <button type="button" data-gear="none">None</button>
@@ -235,12 +236,12 @@
     <footer class="footer">
       <div class="footer__inner">
         <div>
-          <div style="font-family: Playfair Display, serif; font-size: 22px; color: var(--text);">JohnPaul Baric</div>
-          <div>Black + purple. Minimal. High signal.</div>
+          <div class="footer__brandName">JohnPaul Baric</div>
+          <div>Black + cyan. Clean edges. High signal.</div>
         </div>
 
         <div>
-          <div style="font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;">Contact</div>
+          <div class="footer__label">Contact</div>
           <a id="emailLink" href="mailto:hello@johnpaulbaric.com">hello@johnpaulbaric.com</a>
         </div>
       </div>
